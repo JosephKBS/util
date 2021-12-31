@@ -1,0 +1,128 @@
+<html>
+ 
+<head>
+    <h1> <br> Simple Calculator<br> </h1>  
+
+
+    <title> Simple Calculator </title>
+    <style>
+        .myCal {    /* calculator box */
+            position: relative;
+            margin: auto;
+            width: 370px;
+            height: 400px;
+            /* background-color: dimgray; */
+            background-color: indigo; 
+            padding: 5px;
+        }
+        
+        .output { /* output box box */
+            line-height: 40px;
+            background-color: white;
+            color: black;
+            height: 40px;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            text-align: right;
+            font-family: monospace;
+            padding: 0 10px;
+        }
+        
+        .btn { /* button box */
+            width: 65px;
+            height: 55px;
+            padding: 7px;
+            margin: 4px;
+            /*background-color: azure; */
+            background-color: lavender;
+            text-align: center;
+            font-size: 1.8em;
+            cursor: pointer;
+            vertical-align: middle;
+            line-height: 50px;
+            display: inline-block;
+        }
+        
+        .row {
+            width: 100%;
+            display: block;
+        }
+
+        .center { /* https://www.w3schools.com/css/css_align.asp */
+        margin: auto;
+        width: 60%;
+        border: 3px solid indigo;
+        padding: 10px;
+        text-align: center;
+    }
+    </style>
+</head>
+ 
+
+
+<body style="background-color:Lavender;" class="center"> <!-- background color -->
+    <div class="myCal"></div>
+    <script>
+        const myCalculator = document.querySelector(".myCal");
+        const myKeys = [["1", "2", "3", "+"], 
+                        ["4", "5", "6", "-"], 
+                        ["7", "8", "9", "*"], 
+                        ["AC", "0", "=", "/"]];
+        const myOper = ["+", "-", "X", "/"];
+        let myOutput;
+ 
+        document.addEventListener("DOMContentLoaded", function () {
+            myOutput = document.createElement("div");
+            myOutput.innerHTML = "0";
+            myOutput.classList.add("output");
+            myCalculator.appendChild(myOutput);
+            for (let y = 0; y < myKeys.length; y++) {
+                let div = document.createElement("div");
+                div.classList.add("row");
+                for (let x = 0; x < myKeys[y].length; x++) {
+                    //console.log(myKeys[y][x]);
+                    let btn = document.createElement("div");
+                    btn.innerHTML = myKeys[y][x];
+                    btn.classList.add("btn");
+                    btn.addEventListener("click", btnHit);
+                    div.appendChild(btn);
+                }
+                myCalculator.appendChild(div);
+                console.log(div);
+            }
+        })
+ 
+        function btnHit(e) {
+            console.log(this.innerText);
+            let myValue = this.innerText;
+            let myCal = myOutput.innerText;
+            if (myCal == "0") {
+                myCal = "";
+            }
+            if (myValue == "=") {
+                //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
+                myCal = eval(myCal);
+            }
+            else {
+                //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
+                let lastChar = myCal.substring(myCal.length - 1);
+                //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+                if (myOper.includes(myValue)) {
+                    if (myOper.includes(lastChar)) {
+                        myCal = myCal.substring(0, myCal.length - 1);
+                    }
+                    else {
+                        myCal = eval(myCal);
+                    }
+                }
+                myCal = myCal + myValue;
+            }
+            if (myValue == "AC") {
+                myCal = 0;
+            }
+            myOutput.innerText = myCal;
+        }
+    </script>
+</body>
+ 
+</html>

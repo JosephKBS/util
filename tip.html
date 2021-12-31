@@ -1,0 +1,115 @@
+<html>
+ 
+<head>
+    <title>Tip calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+    
+    <br><h1> Simple Tip Calculator </h1>
+    <style>
+    .tip_button{
+        height:40px;
+        width:60px;
+        padding: 0px;
+        margin: 2px;
+        background-color: indigo;
+        /*font-size: 1.2em;*/
+        /*font-family: monospace;*/
+        font-size: medium;
+        /*cursor: pointer;*/
+        /*vertical-align: middle;*/
+        /*line-height: 20px;*/
+        display: inline-block;
+        color:white;
+        text-align: center;
+    }
+    .center { /* https://www.w3schools.com/css/css_align.asp */
+        margin: auto;
+        width: 60%;
+        border: 3px solid indigo;
+        padding: 10px;
+        text-align: center;
+    }
+
+    </style>
+
+
+<body style="background-color:Lavender;" class="center">
+    <div class="output"></div>
+    <label for="amount"> Food expense($) : </label>
+    <input type="number" id="amount">
+    
+</br><br>
+<!--  
+    <input type="button" class="tip_button" value="15%" id="tip1"> 
+    <input type="button" class="tip_button" value="18%" id="tip2"> 
+    <input type="button" class="tip_button" value="20%" id="tip3"> 
+    <input type="button" class="tip_button" value="22%" id="tip4"> 
+-->
+    <button type="button" class="tip_button" id="tip1"> 15% </button>
+    <button type="button" class="tip_button" id="tip2"> 18% </button>
+    <button type="button" class="tip_button" id="tip3"> 20% </button>
+    <button type="button" class="tip_button" id="tip4"> 22% </button>
+
+
+<br>
+
+    <script>
+        const button1 = document.querySelector('button[id="tip1"]');
+        const button2 = document.querySelector('button[id="tip2"]');
+        const button3 = document.querySelector('button[id="tip3"]');
+        const button4 = document.querySelector('button[id="tip4"]');
+        const output = document.querySelector(".output");
+
+        console.log(button1);
+        button1.addEventListener("click", function () {
+            const cost = document.querySelector("input");
+                console.log(cost.value * 0.15);
+            let tip1 = (cost.value * 0.15).toFixed(2);
+            let total1 = (cost.value * 1.15).toFixed(2);
+            let temp1 = `<h3>Food expense : $${cost.value}</h3>` +
+                        `<h3>Tip(15%) : $${tip1}</h3>` + 
+                        `<h3>Total expense : $${total1}</h3>` ;
+            output.innerHTML = temp1;
+        })
+        
+        console.log(button2);
+        button2.addEventListener("click", function () {
+            const cost = document.querySelector("input");
+            let tip2 = (cost.value * 0.18).toFixed(2);
+            let total2 = (cost.value * 1.18).toFixed(2);
+            let temp2 = `<h3>Food expense : $${cost.value}</h3>` +
+                        `<h3>Tip(18%) : $${tip2}</h3>` + 
+                        `<h3>Total expense : $${total2}</h3>` ;
+            output.innerHTML = temp2;
+        })
+        
+        console.log(button3);
+        button3.addEventListener("click", function () {
+            const cost = document.querySelector("input");
+            let tip3 = (cost.value * 0.2).toFixed(2);
+            let total3 = (cost.value * 1.2).toFixed(2);
+            let temp3 = `<h3>Food expense : $${cost.value}</h3>` +
+                        `<h3>Tip(20%) : $${tip3}</h3>` + 
+                        `<h3>Total expense : $${total3}</h3>` ;
+            output.innerHTML = temp3;
+        })
+
+        
+        console.log(button4);
+        button4.addEventListener("click", function () {
+            const cost = document.querySelector("input");
+            let tip4 = (cost.value * 0.22).toFixed(2);
+            let total4 = (cost.value * 1.22).toFixed(2);
+            let temp4 = `<h3>Food expense : $${cost.value}</h3>` +
+                        `<h3>Tip(22%) : $${tip4}</h3>` + 
+                        `<h3>Total expense : $${total4}</h3>` ;
+            output.innerHTML = temp4;
+        })
+
+
+    </script>
+
+</body>
+ 
+</html>
