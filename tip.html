@@ -1,13 +1,15 @@
 <html>
  
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>Tip calculator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
     
     <br><h1> Simple Tip Calculator </h1>
+    <p> This is a simple tip calculator based on a rate that you want to add on.</p>
+    <p> Tip: Usually, it is customary to leave a tip around 15% to 20%. </p>
+
+
     <style>
     .tip_button{
         height:40px;
@@ -32,15 +34,21 @@
         padding: 10px;
         text-align: center;
     }
+    /* Solid border */
+    hr.solid {
+        border-top: 3px solid LightGrey;
+    }
 
     </style>
 
 
+
+
+
 <body style="background-color:Lavender;" class="center">
-    <div class="output"></div>
-    <label for="amount"> Food expense($) : </label>
-    <input type="number" id="amount">
     
+    <label for="amount"> Food expense($) : </label>
+    <input type="number" id="amount" placeholder="e.g. 130">
 </br><br>
 <!--  
     <input type="button" class="tip_button" value="15%" id="tip1"> 
@@ -52,20 +60,55 @@
     <button type="button" class="tip_button" id="tip2"> 18% </button>
     <button type="button" class="tip_button" id="tip3"> 20% </button>
     <button type="button" class="tip_button" id="tip4"> 22% </button>
+    
+    <!-- <div class="output" id="simpetip" ></div> -->
+    <div class="simpletip" ></div> 
 
 
-<br>
+
+</br>
+    <hr class="solid">
+
+    <h1> Restaurant expense calculator </h1>
+    <p> This is a convenient calculator when a subset of group ordered more than others. </p>
+    <p> E.g) 8 people shared all meals and 3 people orderded beer individually.</p>
+    
+    <label for="totalppl"> Total people : </label>
+    <input type="number" id="totalppl" placeholder="e.g. 5">
+</br>
+    <label for="totalextra"> People with extra food : </label>
+    <input type="number" id="totalextra" placeholder="e.g. 3">
+</br></br>
+    <label for="sharedfood"> Shared food($) : </label>
+    <input type="number" id="sharedfood" placeholder="e.g. 87 (pizza and pasta)">
+</br>
+    <label for="extrafood"> Extra food($) : </label>
+    <input type="number" id="extrafood" placeholder="e.g. 30 (3 beers)">
+</br>
+    <label for="tax"> Total Tax($) : </label>
+    <input type="number" id="tax" placeholder="e.g. 25">
+</br></br>
+    <button type="button" class="tip_button" id="tip5"> 15% </button>
+    <button type="button" class="tip_button" id="tip6"> 18% </button>
+    <button type="button" class="tip_button" id="tip7"> 20% </button>
+    <button type="button" class="tip_button" id="tip8"> 22% </button>
+
+    <!-- <div class="output" id="expensedivider" ></div> -->
+    <div class="expensedivider" ></div> 
+
+
 
     <script>
         const button1 = document.querySelector('button[id="tip1"]');
         const button2 = document.querySelector('button[id="tip2"]');
         const button3 = document.querySelector('button[id="tip3"]');
         const button4 = document.querySelector('button[id="tip4"]');
-        const output = document.querySelector(".output");
+        const output = document.querySelector(".simpletip");
+        const cost = document.querySelector('input[id="amount"]');
 
         console.log(button1);
         button1.addEventListener("click", function () {
-            const cost = document.querySelector("input");
+            //const cost = document.querySelector('input[id="amount"]');
                 console.log(cost.value * 0.15);
             let tip1 = (cost.value * 0.15).toFixed(2);
             let total1 = (cost.value * 1.15).toFixed(2);
@@ -77,7 +120,7 @@
         
         console.log(button2);
         button2.addEventListener("click", function () {
-            const cost = document.querySelector("input");
+            const cost = document.querySelector('input[id="amount"]');
             let tip2 = (cost.value * 0.18).toFixed(2);
             let total2 = (cost.value * 1.18).toFixed(2);
             let temp2 = `<h3>Food expense : $${cost.value}</h3>` +
@@ -88,7 +131,7 @@
         
         console.log(button3);
         button3.addEventListener("click", function () {
-            const cost = document.querySelector("input");
+            const cost = document.querySelector('input[id="amount"]');
             let tip3 = (cost.value * 0.2).toFixed(2);
             let total3 = (cost.value * 1.2).toFixed(2);
             let temp3 = `<h3>Food expense : $${cost.value}</h3>` +
@@ -100,7 +143,7 @@
         
         console.log(button4);
         button4.addEventListener("click", function () {
-            const cost = document.querySelector("input");
+            const cost = document.querySelector('input[id="amount"]');
             let tip4 = (cost.value * 0.22).toFixed(2);
             let total4 = (cost.value * 1.22).toFixed(2);
             let temp4 = `<h3>Food expense : $${cost.value}</h3>` +
@@ -110,6 +153,133 @@
         })
 
 
+        // ----------- This is expense divider tap ----------------- //
+        const button5 = document.querySelector('button[id="tip5"]');
+        const button6 = document.querySelector('button[id="tip6"]');
+        const button7 = document.querySelector('button[id="tip7"]');
+        const button8 = document.querySelector('button[id="tip8"]');
+        const output1 = document.querySelector(".expensedivider");
+
+        const totalppl = document.querySelector('input[id="totalppl"]');
+        const extrappl = document.querySelector('input[id="totalextra"]');
+        const sharedfood = document.querySelector('input[id="sharedfood"]');
+        const extrafood = document.querySelector('input[id="extrafood"]');
+        const tax = document.querySelector('input[id="tax"]');
+
+        // 15% tip
+        console.log(button5);
+        button5.addEventListener("click", function () {
+            var nonsharedppl =  totalppl.value - extrappl.value ;
+            var totalfood = sharedfood.value*1 + extrafood.value*1 ;
+            var tip1 = (totalfood * 0.15).toFixed(2);
+            var total1 = (totalfood * 1.15).toFixed(2);
+
+            var exp_share = sharedfood.value * (1/totalppl.value) ;
+            var exp_extra = sharedfood.value * (1/totalppl.value) + extrafood.value * (1/extrappl.value) ;
+            var tax_share = tax.value * (sharedfood.value/totalfood) * (1/nonsharedppl); 
+            var tax_extra = tax.value * (extrafood.value/totalfood) * (1/extrappl.value) ;
+            var tip_share = tip1 * (sharedfood.value/totalfood) * (1/nonsharedppl) ;
+            var tip_extra = tip1 * (extrafood.value/totalfood) * (1/extrappl.value)  ;
+
+            let temp5 = `<h3>Shared food expense : $${sharedfood.value}</h3>` +
+                        `<h3>extra food expense : $${extrafood.value}</h3>` +
+                        `<h3>Expense for shared-food per-person : $${ exp_share }</h3>` +
+                        `<h3>Expense for extra-food per-person : $${  exp_extra }</h3>` +
+                        `<h3>Tax for shared-food per-person : $${ tax_share }</h3>` +
+                        `<h3>Tax for extra-food per-person : $${  tax_extra  }</h3>` +
+                        `<h3>Tip(15%) for shared-food per-person : $${ tip_share }</h3>` +
+                        `<h3>Tip(15%) for extra-food per-person : $${  tip_extra  }</h3>` +                       
+                        `<h3>Total for shared-food per-person : $${ exp_share + tax_share + tip_share }</h3>` +
+                        `<h3>Total for extra-food per-person : $${  exp_extra + tax_extra + tip_extra }</h3>` ;                        
+            output1.innerHTML = temp5;
+        })
+
+
+        // 18% tip
+        console.log(button6);
+        button6.addEventListener("click", function () {
+            var nonsharedppl =  totalppl.value - extrappl.value ;
+            var totalfood = sharedfood.value*1 + extrafood.value*1 ;
+            var tip1 = (totalfood * 0.18).toFixed(2);
+            var total1 = (totalfood * 1.18).toFixed(2);
+
+            var exp_share = sharedfood.value * (1/totalppl.value) ;
+            var exp_extra = sharedfood.value * (1/totalppl.value) + extrafood.value * (1/extrappl.value) ;
+            var tax_share = tax.value * (sharedfood.value/totalfood) * (1/nonsharedppl); 
+            var tax_extra = tax.value * (extrafood.value/totalfood) * (1/extrappl.value) ;
+            var tip_share = tip1 * (sharedfood.value/totalfood) * (1/nonsharedppl) ;
+            var tip_extra = tip1 * (extrafood.value/totalfood) * (1/extrappl.value)  ;
+
+            let temp5 = `<h3>Shared food expense : $${sharedfood.value}</h3>` +
+                        `<h3>extra food expense : $${extrafood.value}</h3>` +
+                        `<h3>Expense for shared-food per-person : $${ exp_share }</h3>` +
+                        `<h3>Expense for extra-food per-person : $${  exp_extra }</h3>` +
+                        `<h3>Tax for shared-food per-person : $${ tax_share }</h3>` +
+                        `<h3>Tax for extra-food per-person : $${  tax_extra  }</h3>` +
+                        `<h3>Tip(15%) for shared-food per-person : $${ tip_share }</h3>` +
+                        `<h3>Tip(15%) for extra-food per-person : $${  tip_extra  }</h3>` +                       
+                        `<h3>Total for shared-food per-person : $${ exp_share + tax_share + tip_share }</h3>` +
+                        `<h3>Total for extra-food per-person : $${  exp_extra + tax_extra + tip_extra }</h3>` ;                        
+            output1.innerHTML = temp5;
+        })
+
+
+                // 20% tip
+            console.log(button7);
+            button7.addEventListener("click", function () {
+            var nonsharedppl =  totalppl.value - extrappl.value ;
+            var totalfood = sharedfood.value*1 + extrafood.value*1 ;
+            var tip1 = (totalfood * 0.2).toFixed(2);
+            var total1 = (totalfood * 1.2).toFixed(2);
+
+            var exp_share = sharedfood.value * (1/totalppl.value) ;
+            var exp_extra = sharedfood.value * (1/totalppl.value) + extrafood.value * (1/extrappl.value) ;
+            var tax_share = tax.value * (sharedfood.value/totalfood) * (1/nonsharedppl); 
+            var tax_extra = tax.value * (extrafood.value/totalfood) * (1/extrappl.value) ;
+            var tip_share = tip1 * (sharedfood.value/totalfood) * (1/nonsharedppl) ;
+            var tip_extra = tip1 * (extrafood.value/totalfood) * (1/extrappl.value)  ;
+
+            let temp5 = `<h3>Shared food expense : $${sharedfood.value}</h3>` +
+                        `<h3>extra food expense : $${extrafood.value}</h3>` +
+                        `<h3>Expense for shared-food per-person : $${ exp_share }</h3>` +
+                        `<h3>Expense for extra-food per-person : $${  exp_extra }</h3>` +
+                        `<h3>Tax for shared-food per-person : $${ tax_share }</h3>` +
+                        `<h3>Tax for extra-food per-person : $${  tax_extra  }</h3>` +
+                        `<h3>Tip(15%) for shared-food per-person : $${ tip_share }</h3>` +
+                        `<h3>Tip(15%) for extra-food per-person : $${  tip_extra  }</h3>` +                       
+                        `<h3>Total for shared-food per-person : $${ exp_share + tax_share + tip_share }</h3>` +
+                        `<h3>Total for extra-food per-person : $${  exp_extra + tax_extra + tip_extra }</h3>` ;                        
+            output1.innerHTML = temp5;
+        })
+
+
+        // 22% tip
+        console.log(button5);
+        button5.addEventListener("click", function () {
+            var nonsharedppl =  totalppl.value - extrappl.value ;
+            var totalfood = sharedfood.value*1 + extrafood.value*1 ;
+            var tip1 = (totalfood * 0.22).toFixed(2);
+            var total1 = (totalfood * 1.22).toFixed(2);
+
+            var exp_share = sharedfood.value * (1/totalppl.value) ;
+            var exp_extra = sharedfood.value * (1/totalppl.value) + extrafood.value * (1/extrappl.value) ;
+            var tax_share = tax.value * (sharedfood.value/totalfood) * (1/nonsharedppl); 
+            var tax_extra = tax.value * (extrafood.value/totalfood) * (1/extrappl.value) ;
+            var tip_share = tip1 * (sharedfood.value/totalfood) * (1/nonsharedppl) ;
+            var tip_extra = tip1 * (extrafood.value/totalfood) * (1/extrappl.value)  ;
+
+            let temp5 = `<h3>Shared food expense : $${sharedfood.value}</h3>` +
+                        `<h3>extra food expense : $${extrafood.value}</h3>` +
+                        `<h3>Expense for shared-food per-person : $${ exp_share }</h3>` +
+                        `<h3>Expense for extra-food per-person : $${  exp_extra }</h3>` +
+                        `<h3>Tax for shared-food per-person : $${ tax_share }</h3>` +
+                        `<h3>Tax for extra-food per-person : $${  tax_extra  }</h3>` +
+                        `<h3>Tip(15%) for shared-food per-person : $${ tip_share }</h3>` +
+                        `<h3>Tip(15%) for extra-food per-person : $${  tip_extra  }</h3>` +                       
+                        `<h3>Total for shared-food per-person : $${ exp_share + tax_share + tip_share }</h3>` +
+                        `<h3>Total for extra-food per-person : $${  exp_extra + tax_extra + tip_extra }</h3>` ;                        
+            output1.innerHTML = temp5;
+        })
     </script>
 
 </body>
