@@ -43,12 +43,13 @@ class Chatbox {
             return;
         }
 
-        let msg1 = { name: "User", message: text1 }
+        let msg1 = { name: "User", message: text1 } /* text input -> must use same key -> "message" */
         this.messages.push(msg1);
-
-        fetch('http://127.0.0.1:5000/predict', {
+        
+        // 원래 이 자리에 이거 있었음 'http://127.0.0.1:5000/predict -> local host'
+        fetch(input: $SCRIPT_ROOT + '/predict', init:{  // predict function in app.py   // SCRIPT_ROOT is defined in HTML bottom!!!
             method: 'POST',
-            body: JSON.stringify({ message: text1 }),
+            body: JSON.stringify({ message: text1 }), // make it as string
             mode: 'cors',
             headers: {
               'Content-Type': 'application/json'
@@ -56,9 +57,9 @@ class Chatbox {
           })
           .then(r => r.json())
           .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
-            this.messages.push(msg2);
-            this.updateChatText(chatbox)
+            let msg2 = { name: "Sam", message: r.answer }; // this time bot will answer (bot name is Sam)
+            this.messages.push(msg2); // from response result 
+            this.updateChatText(chatbox) // update (separate function)
             textField.value = ''
 
         }).catch((error) => {
