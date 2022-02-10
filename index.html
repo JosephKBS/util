@@ -268,6 +268,11 @@
 			<script src="assets/js/main.js"></script>
 
 								
+
+	</body>
+			
+						
+						
 <link rel="stylesheet" href="{{ url_for('chatbot', filename='style.css') }}">  
 <div class="container">
     <div class="chatbox">
@@ -297,12 +302,17 @@
     </div>
 </div>
     
-    
+  
     <script>
         $SCRIPT_ROOT = {{ request.script_root | tojson }};
     </script>
     <script type="text/javascript" src="{{ url_for('chatbot', filename='app.js') }}"></script>
 	<!-- # ONLY when this file is in static folder -->
 
-	</body>
+						
+						
+						
+						
+						
+						
 </html>
