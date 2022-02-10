@@ -304,19 +304,15 @@
     <script>
         $SCRIPT_ROOT = {{ request.script_root | tojson }};
     </script>
-    <script type="text/javascript" src="{{ url_for('chatbot', filename='./chatbot/app.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ url_for('chatbot', filename='./chatbot/app.js') }}"></script> -->
+    
+    <script src="./chatbot/app.js"></script>
 	<!-- # ONLY when this file is in static folder -->
 
 								
 		</section>						
 								
-								
-										
-								
-								
-								
-								
+						
 	</body>
-			
-					
+
 </html>
