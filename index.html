@@ -275,7 +275,7 @@
 					<footer id="footer">
 						<div class="inner">
 							<section>						
-<link rel="stylesheet" href="{{ url_for('chatbot', filename='style_chat.css') }}">  
+<link rel="stylesheet" href="{{ url_for('chatbot', filename='./chatbot/style_chat.css') }}">  
 <div class="container">
     <div class="chatbox">
         <div class="chatbox__support">
@@ -308,7 +308,7 @@
     <script>
         $SCRIPT_ROOT = {{ request.script_root | tojson }};
     </script>
-    <script type="text/javascript" src="{{ url_for('chatbot', filename='app.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('chatbot', filename='./chatbot/app.js') }}"></script>
 	<!-- # ONLY when this file is in static folder -->
 
 								
