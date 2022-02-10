@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+ <!--  
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  
+# if its in static folder, add this part. 
 -->
-    
+  
 <link rel="stylesheet" href="style.css">
 
 <head>
@@ -40,12 +41,17 @@
 </div>
     
     
-    <script src="./app.js"></script>
+    
+    <script src="app.js"></script>    <!-- connect with Javascript file  -->
     <script>
         $SCRIPT_ROOT = {{ request.script_root | tojson }};
     </script>
-
+    
+<!--
     <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+# ONLY when this file is in static folder
+-->
+    
     
     
 </body>
