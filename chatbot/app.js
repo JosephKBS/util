@@ -47,7 +47,8 @@ class Chatbox {
         this.messages.push(msg1);
         
         // 원래 이 자리에 이거 있었음 'http://127.0.0.1:5000/predict -> local host'
-        fetch( $SCRIPT_ROOT + '/predict', {  // predict function in app.py   // SCRIPT_ROOT is defined in HTML bottom!!!
+        fetch( 'http://127.0.0.1:5000/predict', {
+        //fetch( $SCRIPT_ROOT + '/predict', {  // predict function in app.py   // SCRIPT_ROOT is defined in HTML bottom!!!
             method: 'POST', // post method
             body: JSON.stringify({ message: text1 }), // make it as string
             mode: 'cors', 
