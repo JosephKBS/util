@@ -3363,7 +3363,7 @@ input, select, textarea {
 .chatbox--active {
     transform: translateY(-40px); /*# -> becayse it disappeared if it is transparent */
     z-index: 123456;
-    opacity: 0; /* -> becayse it disappeared if it is transparent */
+    opacity: 1; /* -> becayse it disappeared if it is transparent */
 
 }
 
