@@ -3340,9 +3340,11 @@ input, select, textarea {
 }
 
 .chatbox {
-    position: absolute;
+    /*position: absolute;*/
+	position: relative; /*so that box is always on that specific position*/
     bottom: 30px;
     right: 30px;
+	
 }
 
 /* CONTENT IS CLOSE */
@@ -3359,7 +3361,7 @@ input, select, textarea {
 
 /* CONTENT ISOPEN */
 .chatbox--active {
-    transform: translateY(-40px);
+    /*transform: translateY(-40px); # -> becayse it disappeared if it is transparent */
     z-index: 123456;
     opacity: 1;
 
