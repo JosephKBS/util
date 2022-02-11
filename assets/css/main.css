@@ -3351,10 +3351,10 @@ input, select, textarea {
 
 .chatbox {
 	!important; /* so that it so it gets priority over the style attribute in the <body> tag, like so: */
-    /*position: absolute; */
-    position: relative; /*so that box is always on that specific position*/
-    bottom: 30px;
-    right: 30px;
+    position: absolute; 
+    /*position: relative; /*so that box is always on that specific position*/
+    bottom: 20px;
+    right: 20px;
 	
 }
 
