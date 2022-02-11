@@ -3361,8 +3361,8 @@ input, select, textarea {
 
 /* CONTENT ISOPEN */
 .chatbox--active {
-    transform: translateY(-40px); # -> becayse it disappeared if it is transparent
-    z-index: 123456;
+    transform: translateY(-40px); /*# -> becayse it disappeared if it is transparent */
+    z-index: 999999;
     opacity: 0; /* -> becayse it disappeared if it is transparent */
 
 }
